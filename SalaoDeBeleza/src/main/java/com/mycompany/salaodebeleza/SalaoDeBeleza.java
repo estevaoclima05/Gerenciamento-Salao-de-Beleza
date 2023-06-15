@@ -11,6 +11,6 @@ package com.mycompany.salaodebeleza;
 public class SalaoDeBeleza {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello!");
     }
 }
