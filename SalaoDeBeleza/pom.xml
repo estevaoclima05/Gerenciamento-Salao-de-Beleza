@@ -11,4 +11,5 @@
         <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.mycompany.salaodebeleza.SalaoDeBeleza</exec.mainClass>
     </properties>
+    <name>Gerenciamento-Salao-De-Beleza</name>
 </project>
