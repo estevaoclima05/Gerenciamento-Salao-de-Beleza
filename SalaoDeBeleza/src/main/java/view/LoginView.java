@@ -160,9 +160,9 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_TextSenhaActionPerformed
 
     private void BotaoCadastrarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarInicioActionPerformed
-        CadastroFuncView telac = new CadastroFuncView();
+        CadastroFuncView telacadastro = new CadastroFuncView();
         this.dispose();
-        telac.setVisible(true);
+        telacadastro.setVisible(true);
     }//GEN-LAST:event_BotaoCadastrarInicioActionPerformed
 
     /**

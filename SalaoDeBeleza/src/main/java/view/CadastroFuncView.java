@@ -188,9 +188,9 @@ public class CadastroFuncView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         LoginView telal = new LoginView();
+        LoginView telalogin = new LoginView();
         this.dispose();
-        telal.setVisible(true);
+        telalogin.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jPasswordFieldSenhaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaRActionPerformed

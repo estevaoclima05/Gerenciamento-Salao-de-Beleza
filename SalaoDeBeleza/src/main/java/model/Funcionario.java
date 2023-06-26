@@ -10,7 +10,7 @@ package model;
  */
 public class Funcionario {
     
-    private int ordem;
+   
     private String senha;
     private String nome;
     private String email;
@@ -30,18 +30,7 @@ public class Funcionario {
         this.email = email;
         this.senha = senha;
     }
-
     
-    
-    public int getOrdem() {
-        return ordem;
-    }
-
-    public void setOrdem(int ordem) {
-        this.ordem = ordem;
-    }
-
-
     public String getSenha() {
         return senha;
     }
