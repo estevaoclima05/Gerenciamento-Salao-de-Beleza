@@ -8,14 +8,39 @@ package model;
  *
  * @author isats
  */
-public class Funcionario extends Pessoa {
+public class Funcionario {
     
-    protected String senha;
+    private int ordem;
+    private String senha;
+    private String nome;
+    private String email;
+    private String telefone;
 
-    public Funcionario(String senha, int id, String nome, String telefone, String email) {
-        super(id, nome, telefone, email);
+    
+
+    public Funcionario(String nome, String telefone, String email, String senha) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
         this.senha = senha;
     }
+
+  
+    public Funcionario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    
+    
+    public int getOrdem() {
+        return ordem;
+    }
+
+    public void setOrdem(int ordem) {
+        this.ordem = ordem;
+    }
+
 
     public String getSenha() {
         return senha;
@@ -25,7 +50,32 @@ public class Funcionario extends Pessoa {
         this.senha = senha;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
     
     
     
 }
+

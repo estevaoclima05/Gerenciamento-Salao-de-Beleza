@@ -12,4 +12,11 @@
         <exec.mainClass>com.mycompany.salaodebeleza.SalaoDeBeleza</exec.mainClass>
     </properties>
     <name>Gerenciamento-Salao-De-Beleza</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.2</version>
+        </dependency>
+    </dependencies>
 </project>
