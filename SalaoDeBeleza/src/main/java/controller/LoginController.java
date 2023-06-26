@@ -21,7 +21,7 @@ public class LoginController {
     public void FizTarefa(){
         System.out.println("Busquei no banco de dados.");
         
-        this.view.exibeMensagem("Executei o fiz tarefa.");
+       
     }
     
     

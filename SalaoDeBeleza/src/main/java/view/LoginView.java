@@ -67,6 +67,11 @@ public class LoginView extends javax.swing.JFrame {
         });
 
         BotaoCadastrarInicio.setText("Não possuo cadastro");
+        BotaoCadastrarInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoCadastrarInicioActionPerformed(evt);
+            }
+        });
 
         TextSenha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,14 +135,11 @@ public class LoginView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(85, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,6 +168,12 @@ public class LoginView extends javax.swing.JFrame {
     private void TextSenha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextSenha1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextSenha1ActionPerformed
+
+    private void BotaoCadastrarInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarInicioActionPerformed
+        CadastroFuncView telac = new CadastroFuncView();
+        this.dispose();
+        telac.setVisible(true);
+    }//GEN-LAST:event_BotaoCadastrarInicioActionPerformed
 
     /**
      * @param args the command line arguments
