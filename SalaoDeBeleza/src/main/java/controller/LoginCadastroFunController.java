@@ -16,23 +16,49 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Funcionario;
-import view.CadastroFuncView;
+import view.LoginView;
+import view.MenuView;
 
 /**
  *
  * @author estev
  */
-public class CadastroFuncController {
+public class LoginCadastroFunController {
     
-    private final CadastroFuncView view;
+    private final LoginView view;
 
-    public CadastroFuncController(CadastroFuncView view) {
-        this.view = view;
+    public LoginCadastroFunController(LoginView view) {
+      this.view = view;
+    }
+
+       public void autenticar() throws SQLException {
+        
+        // Buscar um usuario da view
+        
+        String email = view.getjTextFieldUserEmail().getText();
+        String senha = view.getjPasswordFieldUserSenha().getText();
+        Funcionario usuarioAutenticar = new Funcionario(email, senha);
+        
+        // Verificar se existe um no BD
+        
+        Connection conexao = new Conexao().getConnection();
+        FuncionarioDAO usuarioDao = new FuncionarioDAO(conexao);
+        
+        boolean existe = usuarioDao.existeNoBancoPorUsuarioESenha(usuarioAutenticar);
+        
+        
+        // Se existir direcionar para menu, se n msg error.
+        if(existe) {
+            MenuView telamenu = new MenuView();
+            this.view.dispose();
+            telamenu.setVisible(true);
+        } else{
+            JOptionPane.showMessageDialog(view, "Usuario ou senha incorretos, tente novamente.");
+        }
+        
     }
     
-    /**
-     *
-     */
+    
     public void cadastrarFunc() {
         
         String nome = view.getjTextFieldNome().getText();
@@ -53,7 +79,7 @@ public class CadastroFuncController {
             JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
             
         } catch (SQLException ex) {
-            Logger.getLogger(CadastroFuncView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
