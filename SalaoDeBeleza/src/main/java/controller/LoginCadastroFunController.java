@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 /**
@@ -41,8 +37,8 @@ public class LoginCadastroFunController {
         
         // Verificar se existe um no BD
         
-        Connection conexao = new Conexao().getConnection();
-        FuncionarioDAO usuarioDao = new FuncionarioDAO(conexao);
+        
+        FuncionarioDAO usuarioDao = new FuncionarioDAO();
         
         boolean existe = usuarioDao.existeNoBancoPorUsuarioESenha(usuarioAutenticar);
         
@@ -72,9 +68,14 @@ public class LoginCadastroFunController {
        
         Funcionario funcionarioCadastrar = new Funcionario(nome, telefone, email, senha);
         try {
-            Connection conexao = new Conexao().getConnection();
-            FuncionarioDAO usuarioDao = new FuncionarioDAO(conexao);
+            //Connection conexao = Conexao.getConnection();
+            FuncionarioDAO usuarioDao = new FuncionarioDAO(); 
             usuarioDao.insert(funcionarioCadastrar);
+            
+            view.getjTextFieldNome().setText("");
+            view.getjTextFieldEmail().setText("");
+            view.getjTextFieldTelefone().setText("");
+            view.getjPasswordFieldSenha().setText("");
             
             JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
             
