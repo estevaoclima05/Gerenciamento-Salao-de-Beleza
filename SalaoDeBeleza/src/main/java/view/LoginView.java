@@ -241,7 +241,7 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telacadastroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CadastroTitulo)
-                .addGap(139, 139, 139))
+                .addGap(123, 123, 123))
         );
         telacadastroLayout.setVerticalGroup(
             telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
