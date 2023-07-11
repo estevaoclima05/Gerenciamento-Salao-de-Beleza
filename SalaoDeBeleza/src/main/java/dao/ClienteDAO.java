@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Agendamento;
 import model.Cliente;
 import view.CadastroClienteTela;
 
@@ -171,6 +172,7 @@ public class ClienteDAO {
         return clientes;
       
     }
+
 
   
 

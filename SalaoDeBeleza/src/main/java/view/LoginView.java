@@ -161,7 +161,6 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
-        jButtonCadastrar.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +171,6 @@ public class LoginView extends javax.swing.JFrame {
         jLabelPassa.setBackground(new java.awt.Color(255, 255, 255));
         jLabelPassa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelPassa.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPassa.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\iconmonstr-caret-right-filled-48.png")); // NOI18N
         jLabelPassa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelPassaMouseClicked(evt);
@@ -181,14 +179,6 @@ public class LoginView extends javax.swing.JFrame {
                 jLabelPassaMousePressed(evt);
             }
         });
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\nome.png")); // NOI18N
-
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\celular.png")); // NOI18N
-
-        jLabel16.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\oii.png")); // NOI18N
-
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\iconmonstr-password-10-16.png")); // NOI18N
 
         telacadastro.setLayer(CadastroTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabelNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -336,10 +326,6 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabelUserSenha.setText("Senha:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\mail.png")); // NOI18N
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\OneDrive\\Área de Trabalho\\imgprojeto\\pass.png")); // NOI18N
-
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         jLabel7.setText("Não possuo cadastro");
         jLabel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -361,28 +347,26 @@ public class LoginView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldUserEmail)
-                                        .addComponent(jPasswordFieldUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldUserEmail)
+                                .addComponent(jPasswordFieldUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(jLabel4)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
