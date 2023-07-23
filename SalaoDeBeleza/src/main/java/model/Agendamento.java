@@ -14,6 +14,7 @@ public class Agendamento {
     private String servico;
     private Double preco;
     private String horario;
+    private String data;
     
     
 
