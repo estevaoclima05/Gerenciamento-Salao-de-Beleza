@@ -1,10 +1,7 @@
 
 package model;
 
-/**
- *
- * @author estev
- */
+
 public class Cliente {
     
     
@@ -34,6 +31,10 @@ public class Cliente {
         this.endereco = endereco;
         this.whatsapp = whatsapp;
         this.alergia = alergia;
+    }
+
+    public Cliente() {
+       
     }
 
     public int getIdC() {
