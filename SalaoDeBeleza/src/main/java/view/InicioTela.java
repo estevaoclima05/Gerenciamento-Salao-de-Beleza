@@ -7,9 +7,7 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class InicioTela extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form InicioTela
-     */
+    
     public InicioTela() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));

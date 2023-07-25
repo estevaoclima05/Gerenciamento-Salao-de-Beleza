@@ -18,9 +18,7 @@ public class LoginView extends javax.swing.JFrame {
 
   
     private final LoginCadastroFunController controller;
-    /**
-     * Creates new form LoginView
-     */
+    
     public LoginView() {
         initComponents();
         controller = new LoginCadastroFunController();
