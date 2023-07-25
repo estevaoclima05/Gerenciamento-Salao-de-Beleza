@@ -1,7 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
+
 package view;
 
 import controller.LoginCadastroFunController;
@@ -9,13 +7,13 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author estev
- */
+
+
+
 public class LoginView extends javax.swing.JFrame {
 
   
@@ -25,7 +23,7 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
-        controller = new LoginCadastroFunController(this);
+        controller = new LoginCadastroFunController();
     }
 
     /**
@@ -50,19 +48,16 @@ public class LoginView extends javax.swing.JFrame {
         jLabelTelefone = new javax.swing.JLabel();
         jLabelEmail = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldTelefone = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jPasswordFieldSenha = new javax.swing.JPasswordField();
         jButtonCadastrar = new javax.swing.JButton();
-        jLabelPassa = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jFormattedTextFieldNome = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldEmail = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldSenha = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
-        jTextFieldUserEmail = new javax.swing.JFormattedTextField();
-        jPasswordFieldUserSenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabelUserEmail = new javax.swing.JLabel();
@@ -71,6 +66,8 @@ public class LoginView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jFormattedTextFieldEmailL = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldSenhaL = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
@@ -142,24 +139,15 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabelTelefone.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTelefone.setText("Telefone:");
+        jLabelTelefone.setMaximumSize(new java.awt.Dimension(37, 16));
+        jLabelTelefone.setMinimumSize(new java.awt.Dimension(37, 16));
+        jLabelTelefone.setPreferredSize(new java.awt.Dimension(37, 16));
 
         jLabelEmail.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEmail.setText("E-mail:");
 
         jLabelSenha.setForeground(new java.awt.Color(255, 255, 255));
         jLabelSenha.setText("Senha:");
-
-        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeActionPerformed(evt);
-            }
-        });
-
-        jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTelefoneActionPerformed(evt);
-            }
-        });
 
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -168,15 +156,15 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
-        jLabelPassa.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelPassa.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelPassa.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelPassa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelPassaMouseClicked(evt);
+        jFormattedTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldTelefoneActionPerformed(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabelPassaMousePressed(evt);
+        });
+
+        jFormattedTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldEmailActionPerformed(evt);
             }
         });
 
@@ -185,16 +173,15 @@ public class LoginView extends javax.swing.JFrame {
         telacadastro.setLayer(jLabelTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabelEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabelSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jTextFieldNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jTextFieldTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jTextFieldEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jPasswordFieldSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jButtonCadastrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jLabelPassa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabel14, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabel15, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabel16, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabel17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        telacadastro.setLayer(jFormattedTextFieldNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        telacadastro.setLayer(jFormattedTextFieldTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        telacadastro.setLayer(jFormattedTextFieldEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        telacadastro.setLayer(jFormattedTextFieldSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout telacadastroLayout = new javax.swing.GroupLayout(telacadastro);
         telacadastro.setLayout(telacadastroLayout);
@@ -210,28 +197,23 @@ public class LoginView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(telacadastroLayout.createSequentialGroup()
-                        .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonCadastrar)
-                                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addGap(123, 123, 123))
                     .addGroup(telacadastroLayout.createSequentialGroup()
-                        .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jLabelPassa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telacadastroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFormattedTextFieldSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonCadastrar)
+                            .addComponent(jLabelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(telacadastroLayout.createSequentialGroup()
+                .addGap(130, 130, 130)
                 .addComponent(CadastroTitulo)
-                .addGap(123, 123, 123))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         telacadastroLayout.setVerticalGroup(
             telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,30 +223,27 @@ public class LoginView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jFormattedTextFieldNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelTelefone)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(telacadastroLayout.createSequentialGroup()
-                        .addComponent(jLabelEmail)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabelPassa, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelSenha)
+                .addComponent(jLabelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCadastrar)
                 .addContainerGap(118, Short.MAX_VALUE))
@@ -294,20 +273,6 @@ public class LoginView extends javax.swing.JFrame {
         getContentPane().add(pag1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextFieldUserEmail.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldUserEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUserEmailActionPerformed(evt);
-            }
-        });
-
-        jPasswordFieldUserSenha.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordFieldUserSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordFieldUserSenhaActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(153, 102, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -339,6 +304,11 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        jFormattedTextFieldEmailL.setBackground(new java.awt.Color(204, 204, 204));
+
+        jFormattedTextFieldSenhaL.setBackground(new java.awt.Color(204, 204, 204));
+        jFormattedTextFieldSenhaL.setForeground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -346,52 +316,56 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldUserEmail)
-                                .addComponent(jPasswordFieldUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jFormattedTextFieldSenhaL)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldEmailL, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                        .addGap(135, 135, 135)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelUserEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelUserSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jPasswordFieldUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel2)
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelUserEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextFieldEmailL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelUserSenha)
+                                .addGap(28, 28, 28))
+                            .addComponent(jFormattedTextFieldSenhaL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1)))
+                .addGap(36, 36, 36)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2);
@@ -401,11 +375,25 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        String email = jFormattedTextFieldEmailL.getText();
+        String senha = jFormattedTextFieldSenhaL.getText();
+
         try {
-            controller.autenticar();
-        } catch (SQLException ex) {
+
+            if (controller.autenticar(email, senha)) {
+                MenuView telamenu = new MenuView();
+                this.dispose();
+                telamenu.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos, tente novamente.");
+            }
+
+        } catch (Exception ex) {
             Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -414,39 +402,49 @@ public class LoginView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jPasswordFieldUserSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldUserSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldUserSenhaActionPerformed
-
-    private void jTextFieldUserEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUserEmailActionPerformed
-
     private void jLabel7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel7MouseMoved
 
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
-
-    private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
-
-    private void jLabelPassaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPassaMousePressed
-        telainicio.setVisible(true);
-        telacadastro.setVisible(false);
-    }//GEN-LAST:event_jLabelPassaMousePressed
-
-    private void jLabelPassaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPassaMouseClicked
-
-    }//GEN-LAST:event_jLabelPassaMouseClicked
-
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        controller.cadastrarFunc();
+//        controller.cadastrarFunc
+
+            String nome = jFormattedTextFieldNome.getText();
+            String telefone = jFormattedTextFieldTelefone.getText();
+            String email = jFormattedTextFieldEmail.getText();
+            String senha = jFormattedTextFieldSenha.getText();
+    
+
+         try {
+               controller.cadastrarFunc(nome, telefone, email, senha);
+               JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
+               LimparCampos();
+               
+           } catch (Exception ex) {
+               Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
+    private void jFormattedTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldEmailActionPerformed
+
+    private void jFormattedTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldTelefoneActionPerformed
+
+    
+    
+    
+     public void LimparCampos() {
+          
+        jFormattedTextFieldNome.setText("");
+        jFormattedTextFieldTelefone.setText("");
+        jFormattedTextFieldEmail.setText("");
+        jFormattedTextFieldSenha.setText("");
+          
+      }  
+        
     /**
      * @param args the command line arguments
      */
@@ -482,63 +480,24 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
         
+        
+     
+        
+        
      }
 
-    public JPasswordField getjPasswordFieldSenha() {
-        return jPasswordFieldSenha;
-    }
-
-    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
-        this.jPasswordFieldSenha = jPasswordFieldSenha;
-    }
-
-    public JPasswordField getjPasswordFieldUserSenha() {
-        return jPasswordFieldUserSenha;
-    }
-
-    public void setjPasswordFieldUserSenha(JPasswordField jPasswordFieldUserSenha) {
-        this.jPasswordFieldUserSenha = jPasswordFieldUserSenha;
-    }
-
-    public JTextField getjTextFieldEmail() {
-        return jTextFieldEmail;
-    }
-
-    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
-        this.jTextFieldEmail = jTextFieldEmail;
-    }
-
-    public JTextField getjTextFieldNome() {
-        return jTextFieldNome;
-    }
-
-    public void setjTextFieldNome(JTextField jTextFieldNome) {
-        this.jTextFieldNome = jTextFieldNome;
-    }
-
-    public JTextField getjTextFieldTelefone() {
-        return jTextFieldTelefone;
-    }
-
-    public void setjTextFieldTelefone(JTextField jTextFieldTelefone) {
-        this.jTextFieldTelefone = jTextFieldTelefone;
-    }
-
-    public JFormattedTextField getjTextFieldUserEmail() {
-        return jTextFieldUserEmail;
-    }
-
-    public void setjTextFieldUserEmail(JFormattedTextField jTextFieldUserEmail) {
-        this.jTextFieldUserEmail = jTextFieldUserEmail;
-    }
-    
-    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CadastroTitulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonCadastrar;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEmail;
+    private javax.swing.JFormattedTextField jFormattedTextFieldEmailL;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNome;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSenha;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSenhaL;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -553,19 +512,12 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo1;
     private javax.swing.JLabel jLabelLogo2;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JLabel jLabelPassa;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelUserEmail;
     private javax.swing.JLabel jLabelUserSenha;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordFieldSenha;
-    private javax.swing.JPasswordField jPasswordFieldUserSenha;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
-    private javax.swing.JFormattedTextField jTextFieldUserEmail;
     private javax.swing.JPanel pag1;
     private javax.swing.JLayeredPane telacadastro;
     private javax.swing.JPanel telainicio;
