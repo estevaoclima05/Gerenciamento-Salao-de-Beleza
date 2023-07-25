@@ -1,76 +1,60 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package view;
-
 
 import controller.ClienteController;
 import dao.ClienteDAO;
-import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-/**
- *
- * @author estev
- */
+
+
+
+
+
 public class CadastroClienteTela extends javax.swing.JInternalFrame {
 
     private final ClienteController controller;
-    
+
     public CadastroClienteTela() {
         initComponents();
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
-        controller = new ClienteController(this);
+        controller = new ClienteController();
         carregarTabela();
     }
-    
-    public void carregarTabela () {
-        
-        DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+
+    public void carregarTabela() {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTableClienteCadastro.getModel();
         modelo.setNumRows(0);
-        
+
         ClienteDAO dao = new ClienteDAO();
-        
-        
-        try 
-        {
-             
-            for(Cliente c: dao.listar())
-            
-            {
-                
-                modelo.addRow(new Object[]
-                
-                {
-                c.getIdC(),
-                c.getNomeC(),
-                c.getEmailC(),
-                c.getTelefoneC(),
-                c.getEnderecoC(),
-                c.getWhatsappC(),
-                c.getAlergiaC()
-                                                                    
+
+        try {
+
+            for (Cliente c : dao.listar()) {
+
+                modelo.addRow(new Object[]{
+                    c.getIdC(),
+                    c.getNomeC(),
+                    c.getEmailC(),
+                    c.getTelefoneC(),
+                    c.getEnderecoC(),
+                    c.getWhatsappC(),
+                    c.getAlergiaC()
+
                 });
-                
+
             }
-  
+
+        } catch (Exception ErroSql) {
+            JOptionPane.showMessageDialog(null, "Error ao carregar tabela" + ErroSql, "Erro", JOptionPane.ERROR_MESSAGE);
         }
-        
-        catch (Exception ErroSql) {
-            JOptionPane.showMessageDialog(null, "Error ao carregar tabela"+ ErroSql,"Erro", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
-        
-        
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,14 +67,8 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldNomeC = new javax.swing.JTextField();
-        jTextFieldTelefoneC = new javax.swing.JTextField();
-        jTextFieldWhatsappC = new javax.swing.JTextField();
-        jTextFieldEnderecoC = new javax.swing.JTextField();
-        jTextFieldEmailC = new javax.swing.JTextField();
-        jTextFieldAlergiaC = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableClienteCadastro = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -98,11 +76,16 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BotaoApagar = new javax.swing.JButton();
+        BotaoAlterar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextFieldIdC = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        BotaoLimpar = new javax.swing.JButton();
+        CampoNomeC = new javax.swing.JFormattedTextField();
+        CampoTelefoneC = new javax.swing.JFormattedTextField();
+        CampoWhatsappC = new javax.swing.JFormattedTextField();
+        CampoEmailC = new javax.swing.JFormattedTextField();
+        CampoEnderecoC = new javax.swing.JFormattedTextField();
+        CampoAlergiaC = new javax.swing.JFormattedTextField();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setMaximumSize(new java.awt.Dimension(32767, 32767));
@@ -115,24 +98,7 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(153, 102, 255));
         jLabel1.setText("Nome:");
 
-        jTextFieldNomeC.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTextFieldTelefoneC.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTextFieldWhatsappC.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTextFieldEnderecoC.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTextFieldEmailC.setBackground(new java.awt.Color(204, 204, 204));
-        jTextFieldEmailC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailCActionPerformed(evt);
-            }
-        });
-
-        jTextFieldAlergiaC.setBackground(new java.awt.Color(204, 204, 204));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableClienteCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -151,13 +117,13 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setSelectionBackground(new java.awt.Color(153, 102, 255));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableClienteCadastro.setSelectionBackground(new java.awt.Color(153, 102, 255));
+        jTableClienteCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                jTableClienteCadastroMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableClienteCadastro);
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -197,32 +163,55 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 102, 255));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Apagar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotaoApagar.setBackground(new java.awt.Color(153, 102, 255));
+        BotaoApagar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoApagar.setText("Apagar");
+        BotaoApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotaoApagarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(153, 102, 255));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Alterar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotaoAlterar.setBackground(new java.awt.Color(153, 102, 255));
+        BotaoAlterar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoAlterar.setText("Alterar");
+        BotaoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BotaoAlterarActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(153, 102, 255));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Limpar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BotaoLimpar.setBackground(new java.awt.Color(153, 102, 255));
+        BotaoLimpar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoLimpar.setText("Limpar");
+        BotaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BotaoLimparActionPerformed(evt);
             }
         });
+
+        CampoNomeC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoNomeC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoNomeC.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        CampoTelefoneC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoTelefoneC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoTelefoneC.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        CampoWhatsappC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoWhatsappC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoWhatsappC.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        CampoEmailC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoEmailC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoEmailC.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        CampoEnderecoC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoEnderecoC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoEnderecoC.setPreferredSize(new java.awt.Dimension(64, 22));
+
+        CampoAlergiaC.setBackground(new java.awt.Color(204, 204, 204));
+        CampoAlergiaC.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,50 +222,47 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(266, 266, 266)
-                        .addComponent(jButton4)
+                        .addComponent(BotaoLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(BotaoAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldNomeC, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldTelefoneC)
-                                    .addComponent(jTextFieldWhatsappC))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(1, 1, 1)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextFieldEmailC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextFieldEnderecoC, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldAlergiaC, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton1))))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(113, 113, 113)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldIdC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                        .addComponent(BotaoApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CampoNomeC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CampoTelefoneC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CampoWhatsappC, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(1, 1, 1)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(CampoEmailC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(CampoEnderecoC, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(CampoAlergiaC, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton1))))
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(113, 113, 113)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(149, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,30 +278,29 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldNomeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmailC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10)
+                    .addComponent(CampoNomeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoEmailC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTelefoneC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel7)
-                    .addComponent(jTextFieldEnderecoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoTelefoneC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoEnderecoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldAlergiaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldWhatsappC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel8)
                     .addComponent(jButton1)
-                    .addComponent(jTextFieldIdC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoWhatsappC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CampoAlergiaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(BotaoApagar)
+                    .addComponent(BotaoAlterar)
+                    .addComponent(BotaoLimpar))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -333,119 +318,128 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldEmailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailCActionPerformed
+    private void BotaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAlterarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.atualizarCliente();
-        controller.resetarCliente();
+        Object id = jTableClienteCadastro.getValueAt(jTableClienteCadastro.getSelectedRow(), 0);
+
+        String nome = CampoNomeC.getText();
+
+        String telefone = CampoTelefoneC.getText();
+
+        String email = CampoEmailC.getText();
+
+        String endereco = CampoEnderecoC.getText();
+
+        String whatsapp = CampoWhatsappC.getText();
+
+        String alergia = CampoAlergiaC.getText();
+
+        try {
+            controller.atualizarCliente(id, nome, email, telefone, endereco, whatsapp, alergia);
+            LimparCampos();
+            carregarTabela();
+
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
         carregarTabela();
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
+
+    }//GEN-LAST:event_BotaoAlterarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.cadastrarCliente();
-        controller.resetarCliente();
-        carregarTabela();
-        
+//        controller.cadastrarCliente();
+//        controller.resetarCliente();
+//        
+
+        String nome = CampoNomeC.getText();
+
+        String telefone = CampoTelefoneC.getText();
+
+        String email = CampoEmailC.getText();
+
+        String endereco = CampoEnderecoC.getText();
+
+        String whatsapp = CampoWhatsappC.getText();
+
+        String alergia = CampoAlergiaC.getText();
+
+        try {
+            controller.cadastrarCliente(nome, email, telefone, endereco, whatsapp, alergia);
+            LimparCampos();
+            carregarTabela();
+
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller.deletarCliente();
-        controller.resetarCliente();
+    private void BotaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoApagarActionPerformed
+
+        Object id = jTableClienteCadastro.getValueAt(jTableClienteCadastro.getSelectedRow(), 0);
+
+        try {
+            controller.deletarCliente(id);
+            LimparCampos();
+            carregarTabela();
+
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_BotaoApagarActionPerformed
+
+    private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
+        LimparCampos();
         carregarTabela();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotaoLimparActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        controller.resetarCliente();
-        carregarTabela();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jTableClienteCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteCadastroMouseClicked
+        CarregarCampos();
+    }//GEN-LAST:event_jTableClienteCadastroMouseClicked
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        DefaultTableModel RecordTable = (DefaultTableModel)jTable1.getModel();
-        int SelectedRows = jTable1.getSelectedRow();
-        Vector obj = new Vector();
-        
-        obj.add(jTextFieldNomeC.getText());
-        obj.add(jTextFieldTelefoneC.getText());
-        obj.add(jTextFieldWhatsappC.getText());
-        obj.add(jTextFieldEmailC.getText());
-        obj.add(jTextFieldEnderecoC.getText());
-        obj.add(jTextFieldAlergiaC.getText());
-        
-        jTextFieldIdC.setText(RecordTable.getValueAt(SelectedRows, 0).toString()); 
-        jTextFieldNomeC.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        jTextFieldEmailC.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        jTextFieldTelefoneC.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
-        jTextFieldEnderecoC.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        jTextFieldWhatsappC.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        jTextFieldAlergiaC.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
-    }//GEN-LAST:event_jTable1MouseClicked
+    public void LimparCampos() {
 
-    public JTextField getjTextFieldAlergiaC() {
-        return jTextFieldAlergiaC;
+        CampoNomeC.setText("");
+
+        CampoTelefoneC.setText("");
+
+        CampoEmailC.setText("");
+
+        CampoEnderecoC.setText("");
+
+        CampoWhatsappC.setText("");
+
+        CampoAlergiaC.setText("");
+
     }
 
-    public void setjTextFieldAlergiaC(JTextField jTextFieldAlergiaC) {
-        this.jTextFieldAlergiaC = jTextFieldAlergiaC;
-    }
+    public void CarregarCampos() {
 
-    public JTextField getjTextFieldEmailC() {
-        return jTextFieldEmailC;
-    }
+        int setar = jTableClienteCadastro.getSelectedRow();
 
-    public void setjTextFieldEmailC(JTextField jTextFieldEmailC) {
-        this.jTextFieldEmailC = jTextFieldEmailC;
-    }
+        CampoNomeC.setText(jTableClienteCadastro.getValueAt(setar, 1).toString());
 
-    public JTextField getjTextFieldEnderecoC() {
-        return jTextFieldEnderecoC;
-    }
+        CampoEmailC.setText(jTableClienteCadastro.getValueAt(setar, 2).toString());
+        CampoTelefoneC.setText(jTableClienteCadastro.getValueAt(setar, 3).toString());
+        CampoEnderecoC.setText(jTableClienteCadastro.getValueAt(setar, 4).toString());
+        CampoWhatsappC.setText(jTableClienteCadastro.getValueAt(setar, 5).toString());
+        CampoAlergiaC.setText(jTableClienteCadastro.getValueAt(setar, 5).toString());
 
-    public void setjTextFieldEnderecoC(JTextField jTextFieldEnderecoC) {
-        this.jTextFieldEnderecoC = jTextFieldEnderecoC;
     }
-
-    public JTextField getjTextFieldIdC() {
-        return jTextFieldIdC;
-    }
-
-    public void setjTextFieldIdC(JTextField jTextFieldIdC) {
-        this.jTextFieldIdC = jTextFieldIdC;
-    }
-
-    public JTextField getjTextFieldNomeC() {
-        return jTextFieldNomeC;
-    }
-
-    public void setjTextFieldNomeC(JTextField jTextFieldNomeC) {
-        this.jTextFieldNomeC = jTextFieldNomeC;
-    }
-
-    public JTextField getjTextFieldTelefoneC() {
-        return jTextFieldTelefoneC;
-    }
-
-    public void setjTextFieldTelefoneC(JTextField jTextFieldTelefoneC) {
-        this.jTextFieldTelefoneC = jTextFieldTelefoneC;
-    }
-
-    public JTextField getjTextFieldWhatsappC() {
-        return jTextFieldWhatsappC;
-    }
-
-    public void setjTextFieldWhatsappC(JTextField jTextFieldWhatsappC) {
-        this.jTextFieldWhatsappC = jTextFieldWhatsappC;
-    }
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoAlterar;
+    private javax.swing.JButton BotaoApagar;
+    private javax.swing.JButton BotaoLimpar;
+    private javax.swing.JFormattedTextField CampoAlergiaC;
+    private javax.swing.JFormattedTextField CampoEmailC;
+    private javax.swing.JFormattedTextField CampoEnderecoC;
+    private javax.swing.JFormattedTextField CampoNomeC;
+    private javax.swing.JFormattedTextField CampoTelefoneC;
+    private javax.swing.JFormattedTextField CampoWhatsappC;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -456,13 +450,6 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextFieldAlergiaC;
-    private javax.swing.JTextField jTextFieldEmailC;
-    private javax.swing.JTextField jTextFieldEnderecoC;
-    private javax.swing.JTextField jTextFieldIdC;
-    private javax.swing.JTextField jTextFieldNomeC;
-    private javax.swing.JTextField jTextFieldTelefoneC;
-    private javax.swing.JTextField jTextFieldWhatsappC;
+    private javax.swing.JTable jTableClienteCadastro;
     // End of variables declaration//GEN-END:variables
 }
