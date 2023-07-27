@@ -179,7 +179,6 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
 
         CampoClienteA.setBackground(new java.awt.Color(204, 204, 204));
 
-        CampoServicoA.setEditable(false);
         CampoServicoA.setBackground(new java.awt.Color(204, 204, 204));
 
         CampoPrecoA.setBackground(new java.awt.Color(204, 204, 204));
