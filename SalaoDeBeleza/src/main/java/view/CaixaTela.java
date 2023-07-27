@@ -1,5 +1,6 @@
 package view;
 
+import controller.CaixaController;
 import dao.CaixaDAO;
 import dao.Conexao;
 import javax.swing.JOptionPane;
@@ -19,12 +20,14 @@ import org.apache.commons.mail.SimpleEmail;
 
 public class CaixaTela extends javax.swing.JInternalFrame {
 
+    private final CaixaController controller;
+    
     public CaixaTela() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
-
+        controller = new CaixaController();
         carregarTabelaCaixa();
 
     }
@@ -206,7 +209,16 @@ public class CaixaTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonResul1ActionPerformed
 
     private void jButtonResul2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResul2ActionPerformed
-        // TODO add your handling code here:
+        Object id = jTableCaixa.getValueAt(jTableCaixa.getSelectedRow(), 0);
+
+        try {
+            controller.deletarCaixa(id);
+            
+            carregarTabelaCaixa();
+
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonResul2ActionPerformed
 
     public void totalpreco() throws SQLException {
