@@ -101,7 +101,14 @@ public class CaixaTela extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableCaixa.setSelectionBackground(new java.awt.Color(153, 102, 255));
         jScrollPane1.setViewportView(jTableCaixa);
+        if (jTableCaixa.getColumnModel().getColumnCount() > 0) {
+            jTableCaixa.getColumnModel().getColumn(0).setResizable(false);
+            jTableCaixa.getColumnModel().getColumn(1).setResizable(false);
+            jTableCaixa.getColumnModel().getColumn(2).setResizable(false);
+            jTableCaixa.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jButtonResul.setBackground(new java.awt.Color(153, 102, 255));
         jButtonResul.setForeground(new java.awt.Color(255, 255, 255));
