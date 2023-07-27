@@ -1,17 +1,20 @@
 
 package view;
 
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class MenuView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuView
-     */
+    
     public MenuView() {
         initComponents();
         
@@ -49,13 +52,13 @@ public class MenuView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelLogo7 = new javax.swing.JLabel();
         jLabelLogo8 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabelLogo9 = new javax.swing.JLabel();
+        oi = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabelLogo13 = new javax.swing.JLabel();
         jLabelLogo14 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
         jLabelLogo15 = new javax.swing.JLabel();
+        inicio2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,6 +292,7 @@ public class MenuView extends javax.swing.JFrame {
         jLabelLogo6.setText("Seja");
 
         jPanel1.setBackground(new java.awt.Color(153, 102, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelLogo7.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo7.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -300,35 +304,29 @@ public class MenuView extends javax.swing.JFrame {
         jLabelLogo8.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogo8.setText("Agendamentos");
 
-        jFormattedTextField1.setBackground(new java.awt.Color(153, 102, 255));
-        jFormattedTextField1.setBorder(null);
-        jFormattedTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
         jLabelLogo9.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo9.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogo9.setText("------------------------");
+
+        oi.setBackground(new java.awt.Color(255, 255, 255));
+        oi.setFont(oi.getFont().deriveFont(oi.getFont().getStyle() | java.awt.Font.BOLD, 90));
+        oi.setForeground(new java.awt.Color(255, 255, 255));
+        oi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        oi.setText("Q");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelLogo9, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelLogo7)
-                            .addComponent(jLabelLogo8, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelLogo7)
+                    .addComponent(jLabelLogo8, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(oi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelLogo9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -340,12 +338,13 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(jLabelLogo9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelLogo8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addGap(18, 18, 18)
+                .addComponent(oi, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(153, 102, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelLogo13.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo13.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -357,19 +356,16 @@ public class MenuView extends javax.swing.JFrame {
         jLabelLogo14.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogo14.setText("Clientes Cadastados");
 
-        jFormattedTextField4.setBackground(new java.awt.Color(153, 102, 255));
-        jFormattedTextField4.setBorder(null);
-        jFormattedTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jFormattedTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField4ActionPerformed(evt);
-            }
-        });
-
         jLabelLogo15.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo15.setForeground(new java.awt.Color(255, 255, 255));
         jLabelLogo15.setText("------------------------");
+
+        inicio2.setBackground(new java.awt.Color(255, 255, 255));
+        inicio2.setFont(inicio2.getFont().deriveFont(inicio2.getFont().getStyle() | java.awt.Font.BOLD, 90));
+        inicio2.setForeground(new java.awt.Color(255, 255, 255));
+        inicio2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inicio2.setText("Q");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -377,20 +373,18 @@ public class MenuView extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabelLogo14, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelLogo15, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelLogo13))
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelLogo14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inicio2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,9 +395,9 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(jLabelLogo15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelLogo14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jFormattedTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(inicio2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, Short.MAX_VALUE)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout iniciodLayout = new javax.swing.GroupLayout(iniciod);
@@ -423,12 +417,12 @@ public class MenuView extends javax.swing.JFrame {
                         .addGroup(iniciodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelLogo5, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         iniciodLayout.setVerticalGroup(
             iniciodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iniciodLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(iniciodLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(iniciodLayout.createSequentialGroup()
@@ -485,11 +479,16 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioMousePressed
 
     private void InicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseClicked
-
         jDesktopPanel.removeAll();
         jDesktopPanel.add(iniciod);
         jDesktopPanel.revalidate();
         jDesktopPanel.repaint();
+        try {
+            obterQntAVariavelBD();
+            obterQntCVariavelBD();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
 
 
@@ -514,14 +513,60 @@ public class MenuView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CaixaMouseClicked
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    private void obterQntAVariavelBD() throws SQLException {
+        int soma = 0;
 
-    private void jFormattedTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField4ActionPerformed
+        // Conexão com o banco de dados (substitua os valores conforme seu banco)
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String usuario = "postgres";
+        String senha = "lima12345";
+        Connection conn = DriverManager.getConnection(url, usuario, senha);
+        Statement stmt = conn.createStatement();
+        String again = "select * from agendamento";
+        // Consulta para obter a soma da variável do banco de dados (substitua o nome da tabela e da coluna conforme sua estrutura)
+        String query = "SELECT count(idagendamento) AS soma FROM agendamento";
+        ResultSet rs = stmt.executeQuery(query);
+   
+        
+        if (rs.next()) {
+            soma = rs.getInt("soma");
+            oi.setText(String.valueOf(soma));
+        }
+        // Fecha os recursos
+        rs.close();
+        stmt.close();
+        conn.close();
+        
+        
+    }
+  
+    private void obterQntCVariavelBD() throws SQLException {
+        int quantidade = 0;
 
+        // Conexão com o banco de dados (substitua os valores conforme seu banco)
+        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String usuario = "postgres";
+        String senha = "lima12345";
+        Connection conn = DriverManager.getConnection(url, usuario, senha);
+        Statement stmt = conn.createStatement();
+        
+        // Consulta para obter a soma da variável do banco de dados (substitua o nome da tabela e da coluna conforme sua estrutura)
+        String query = "SELECT count(idcliente) AS quantidade FROM cliente";
+        ResultSet rs = stmt.executeQuery(query);
+
+        if (rs.next()) {
+            quantidade = rs.getInt("quantidade");
+            inicio2.setText(String.valueOf(quantidade));
+        }
+        // Fecha os recursos
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -562,12 +607,10 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JPanel CadastroCliente;
     private javax.swing.JPanel Caixa;
     private javax.swing.JPanel Inicio;
+    private javax.swing.JLabel inicio2;
     private javax.swing.JPanel iniciod;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jDesktopPanel;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -575,9 +618,6 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelLogo1;
-    private javax.swing.JLabel jLabelLogo10;
-    private javax.swing.JLabel jLabelLogo11;
-    private javax.swing.JLabel jLabelLogo12;
     private javax.swing.JLabel jLabelLogo13;
     private javax.swing.JLabel jLabelLogo14;
     private javax.swing.JLabel jLabelLogo15;
@@ -591,7 +631,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelLogo9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel oi;
     // End of variables declaration//GEN-END:variables
 }
