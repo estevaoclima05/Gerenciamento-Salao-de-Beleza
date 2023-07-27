@@ -35,6 +35,29 @@ public class CaixaDAO {
             Conexao.closeConnection(conexao);
         }
     }
+    
+    public void delete(Caixa fechamento) throws SQLException {
+
+        Connection conexao = Conexao.getConnection();
+        PreparedStatement pstm = null;
+
+        try {
+
+            pstm = conexao.prepareStatement("delete from caixa where idcaixa = ? ");
+
+            pstm.setInt(1, fechamento.getIdpc());
+          
+            pstm.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendamentoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conexao.closeConnection(conexao);
+        }
+    }
+    
+    
+    
 
     public List<Caixa> listarCaixa() {
 
