@@ -40,9 +40,25 @@ public class CaixaController {
         } catch (SQLException ex) {
             Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
- 
+    public void deletarCaixa(Object id) throws Exception {
+
+        Caixa obj = new Caixa();
+
+        obj.setIdpc((int) id);
+
+        CaixaDAO dao = new CaixaDAO();
+
+        try {
+            dao.delete(obj);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
    
    
