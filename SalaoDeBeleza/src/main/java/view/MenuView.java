@@ -1,6 +1,8 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package view;
-
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,15 +11,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
+import javax.swing.text.DefaultEditorKit;
 
 
 
 public class MenuView extends javax.swing.JFrame {
 
-    
-    public MenuView() {
+    /**
+     * Creates new form MenuView
+     */
+    public MenuView() throws SQLException {
         initComponents();
-        
+        obterQntAVariavelBD();
+        obterQntCVariavelBD();
     }
 
     /**
@@ -29,6 +36,7 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabelLogo1 = new javax.swing.JLabel();
         jLabelLogo2 = new javax.swing.JLabel();
@@ -60,6 +68,17 @@ public class MenuView extends javax.swing.JFrame {
         jLabelLogo15 = new javax.swing.JLabel();
         inicio2 = new javax.swing.JLabel();
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 597, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(153, 102, 255));
@@ -83,6 +102,7 @@ public class MenuView extends javax.swing.JFrame {
         jLabel21.setText("________________________________________");
 
         Inicio.setBackground(new java.awt.Color(255, 255, 255));
+        Inicio.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Inicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 InicioMouseClicked(evt);
@@ -115,6 +135,7 @@ public class MenuView extends javax.swing.JFrame {
         );
 
         CadastroCliente.setBackground(new java.awt.Color(255, 255, 255));
+        CadastroCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         CadastroCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CadastroClienteMouseClicked(evt);
@@ -144,6 +165,8 @@ public class MenuView extends javax.swing.JFrame {
         );
 
         Caixa.setBackground(new java.awt.Color(255, 255, 255));
+        Caixa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Caixa.setPreferredSize(new java.awt.Dimension(191, 32));
         Caixa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CaixaMouseClicked(evt);
@@ -160,7 +183,7 @@ public class MenuView extends javax.swing.JFrame {
         CaixaLayout.setHorizontalGroup(
             CaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CaixaLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(75, 75, 75))
         );
@@ -173,6 +196,7 @@ public class MenuView extends javax.swing.JFrame {
         );
 
         Agendamento.setBackground(new java.awt.Color(255, 255, 255));
+        Agendamento.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         Agendamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AgendamentoMouseClicked(evt);
@@ -197,9 +221,11 @@ public class MenuView extends javax.swing.JFrame {
             AgendamentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AgendamentoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setForeground(new java.awt.Color(153, 102, 255));
         jButton1.setText("Sair");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -216,11 +242,11 @@ public class MenuView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Caixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Agendamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Caixa, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -262,7 +288,7 @@ public class MenuView extends javax.swing.JFrame {
                 .addComponent(Agendamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Caixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(39, 39, 39))
         );
@@ -460,8 +486,8 @@ public class MenuView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -475,7 +501,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void InicioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMousePressed
-       
+        
     }//GEN-LAST:event_InicioMousePressed
 
     private void InicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InicioMouseClicked
@@ -489,15 +515,19 @@ public class MenuView extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         
 
-
+        
+        
     }//GEN-LAST:event_InicioMouseClicked
 
     private void CadastroClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CadastroClienteMouseClicked
         CadastroClienteTela cctela = new CadastroClienteTela();
         jDesktopPanel.removeAll();
         jDesktopPanel.add(cctela).setVisible(true);
+     
+        
     }//GEN-LAST:event_CadastroClienteMouseClicked
 
     private void AgendamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AgendamentoMouseClicked
@@ -513,7 +543,8 @@ public class MenuView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CaixaMouseClicked
 
-    private void obterQntAVariavelBD() throws SQLException {
+    
+        private void obterQntAVariavelBD() throws SQLException {
         int soma = 0;
 
         // Conexão com o banco de dados (substitua os valores conforme seu banco)
@@ -564,9 +595,7 @@ public class MenuView extends javax.swing.JFrame {
         conn.close();
 
     }
-    
-    
-    
+   
     /**
      * @param args the command line arguments
      */
@@ -593,14 +622,31 @@ public class MenuView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuView().setVisible(true);
+                try {
+                    new MenuView().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
+
+    public JPanel getjDesktopPanel() {
+        return jDesktopPanel;
+    }
+
+    public void setjDesktopPanel(JPanel jDesktopPanel) {
+        this.jDesktopPanel = jDesktopPanel;
+    }
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Agendamento;
@@ -610,6 +656,7 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel inicio2;
     private javax.swing.JPanel iniciod;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jDesktopPanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
