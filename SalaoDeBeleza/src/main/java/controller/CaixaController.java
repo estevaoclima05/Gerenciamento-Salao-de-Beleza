@@ -43,7 +43,7 @@ public class CaixaController {
         
     }
 
-    public void deletarCaixa(Object id) throws Exception {
+    public void deletarCaixa (Object id) throws Exception {
 
         Caixa obj = new Caixa();
 
