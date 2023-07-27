@@ -2,6 +2,7 @@
 package view;
 
 import controller.AgendamentoController;
+import controller.CaixaController;
 import dao.AgendamentoDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +14,7 @@ import model.Agendamento;
 public class AgendamentoTela extends javax.swing.JInternalFrame {
 
     private final AgendamentoController controller;
+    private final CaixaController controller2;
 
     public AgendamentoTela() {
         initComponents();
@@ -20,6 +22,7 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         controller = new AgendamentoController();
+        controller2 = new CaixaController();
         carregarTabelaA();
     }
 
@@ -81,6 +84,7 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         CampoDataA = new javax.swing.JFormattedTextField();
         CampoHorarioA = new javax.swing.JFormattedTextField();
+        Feito = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -201,6 +205,15 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        Feito.setBackground(new java.awt.Color(0, 102, 102));
+        Feito.setForeground(new java.awt.Color(255, 255, 255));
+        Feito.setText("Feito");
+        Feito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeitoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -210,9 +223,11 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
                 .addComponent(BotaoLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotaoAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotaoApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Feito, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -291,7 +306,8 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoLimpar)
                     .addComponent(BotaoAlterar)
-                    .addComponent(BotaoApagar))
+                    .addComponent(BotaoApagar)
+                    .addComponent(Feito))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
 
@@ -377,6 +393,24 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
+    private void FeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeitoActionPerformed
+        String cliente = CampoClienteA.getText();
+        Object id = jTableAgendamento.getValueAt(jTableAgendamento.getSelectedRow(), 0);
+
+        Double preco = Double.parseDouble(CampoPrecoA.getText());
+        String data = CampoDataA.getText();
+
+        try {
+            controller2.feito(id, cliente, data, preco);
+            LimparCampos();
+
+        } catch (Exception ex) {
+            Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        carregarTabelaA();
+    }//GEN-LAST:event_FeitoActionPerformed
+
     public void CarregarCampos() {
 
         int setar = jTableAgendamento.getSelectedRow();
@@ -407,6 +441,7 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField CampoHorarioA;
     private javax.swing.JFormattedTextField CampoPrecoA;
     private javax.swing.JFormattedTextField CampoServicoA;
+    private javax.swing.JButton Feito;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
