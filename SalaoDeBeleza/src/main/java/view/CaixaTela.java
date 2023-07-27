@@ -70,6 +70,8 @@ public class CaixaTela extends javax.swing.JInternalFrame {
         jTableCaixa = new javax.swing.JTable();
         jButtonResul = new javax.swing.JButton();
         jButtonResul1 = new javax.swing.JButton();
+        jButtonResul2 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -98,6 +100,8 @@ public class CaixaTela extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTableCaixa);
 
+        jButtonResul.setBackground(new java.awt.Color(153, 102, 255));
+        jButtonResul.setForeground(new java.awt.Color(255, 255, 255));
         jButtonResul.setText("Resultado");
         jButtonResul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +109,8 @@ public class CaixaTela extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonResul1.setBackground(new java.awt.Color(153, 102, 255));
+        jButtonResul1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonResul1.setText("E-mail");
         jButtonResul1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,16 +118,21 @@ public class CaixaTela extends javax.swing.JInternalFrame {
             }
         });
 
+        jButtonResul2.setBackground(new java.awt.Color(153, 102, 255));
+        jButtonResul2.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonResul2.setText("Apagar");
+        jButtonResul2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResul2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(341, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,19 +141,30 @@ public class CaixaTela extends javax.swing.JInternalFrame {
                         .addComponent(jButtonResul1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonResul)
-                        .addGap(81, 81, 81))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonResul2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonResul)
-                    .addComponent(jButtonResul1))
+                    .addComponent(jButtonResul1)
+                    .addComponent(jButtonResul2))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
@@ -182,6 +204,10 @@ public class CaixaTela extends javax.swing.JInternalFrame {
             Logger.getLogger(CaixaTela.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonResul1ActionPerformed
+
+    private void jButtonResul2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResul2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonResul2ActionPerformed
 
     public void totalpreco() throws SQLException {
         double soma = 0;
@@ -270,10 +296,12 @@ public class CaixaTela extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonResul;
     private javax.swing.JButton jButtonResul1;
+    private javax.swing.JButton jButtonResul2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableCaixa;
     // End of variables declaration//GEN-END:variables
 }
