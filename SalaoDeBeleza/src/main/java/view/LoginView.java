@@ -97,23 +97,22 @@ public class LoginView extends javax.swing.JFrame {
         telainicio.setLayout(telainicioLayout);
         telainicioLayout.setHorizontalGroup(
             telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(telainicioLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telainicioLayout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
                 .addGroup(telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabelLogo2)
+                        .addComponent(jLabel20)
+                        .addComponent(jLabel21))
                     .addGroup(telainicioLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelLogo2)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel21)))
-                    .addGroup(telainicioLayout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                        .addGap(63, 63, 63)
                         .addComponent(jLabelLogo1)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(97, 97, 97))
         );
         telainicioLayout.setVerticalGroup(
             telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(telainicioLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
+                .addGap(134, 134, 134)
                 .addComponent(jLabel20)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelLogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -121,7 +120,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addComponent(jLabelLogo2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel21)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         telacadastro.setBackground(new java.awt.Color(255, 153, 255));
@@ -340,7 +339,7 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
+                        .addGap(200, 200, 200)
                         .addComponent(jLabel2)
                         .addGap(56, 56, 56)
                         .addComponent(jLabel6))
