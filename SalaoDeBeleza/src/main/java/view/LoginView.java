@@ -480,31 +480,40 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        String email = jFormattedTextFieldEmailL.getText();
-        String senha = jFormattedTextFieldSenhaL.getText();
-
-        try {
-
-            if (controller.autenticar(email, senha)) {
-                MenuView telamenu = new MenuView();
-                this.dispose();
-                telamenu.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos, tente novamente.");
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+       
+        if (jFormattedTextFieldEmailL.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha seu e-mail");
+            jFormattedTextFieldEmailL.requestFocus();
         }
 
-        
+        if (jFormattedTextFieldSenhaL.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha sua senha");
+            jFormattedTextFieldSenhaL.requestFocus();
+        } else {
+            String email = jFormattedTextFieldEmailL.getText();
+            String senha = jFormattedTextFieldSenhaL.getText();
+
+            try {
+
+                if (controller.autenticar(email, senha)) {
+                    MenuView telamenu = new MenuView();
+                    this.dispose();
+                    telamenu.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos, tente novamente.");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         telainicio.setVisible(false);
         telacadastro.setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseMoved
@@ -513,20 +522,41 @@ public class LoginView extends javax.swing.JFrame {
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
 
+        if (jFormattedTextFieldNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha seu nome ");
+            jFormattedTextFieldNome.requestFocus();
+        }
+
+        if (jFormattedTextFieldTelefone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha seu telefone ");
+            jFormattedTextFieldTelefone.requestFocus();
+        }
+
+        if (jFormattedTextFieldEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha seu e-mail ");
+            jFormattedTextFieldEmail.requestFocus();
+        }
+
+        if (jFormattedTextFieldSenha.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha sua senha ");
+            jFormattedTextFieldSenha.requestFocus();
+        } else {
+
             String nome = jFormattedTextFieldNome.getText();
             String telefone = jFormattedTextFieldTelefone.getText();
             String email = jFormattedTextFieldEmail.getText();
             String senha = jFormattedTextFieldSenha.getText();
-    
 
-         try {
-               controller.cadastrarFunc(nome, telefone, email, senha);
-               JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
-               LimparCampos();
-               
-           } catch (Exception ex) {
-               Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            try {
+                controller.cadastrarFunc(nome, telefone, email, senha);
+                JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso");
+                LimparCampos();
+
+            } catch (Exception ex) {
+                Logger.getLogger(AgendamentoTela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jFormattedTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldEmailActionPerformed
