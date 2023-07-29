@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import static javax.swing.UIManager.get;
 import javax.swing.text.PasswordView;
+import util.Validador;
 
 
 
@@ -64,8 +65,8 @@ public class LoginView extends javax.swing.JFrame {
         jFormattedTextFieldNome = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
         jFormattedTextFieldEmail = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldSenha = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
+        jFormattedTextFieldSenha = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -76,9 +77,9 @@ public class LoginView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jFormattedTextFieldEmailL = new javax.swing.JFormattedTextField();
-        jFormattedTextFieldSenhaL = new javax.swing.JFormattedTextField();
         incon = new javax.swing.JLabel();
         incon1 = new javax.swing.JLabel();
+        jFormattedTextFieldSenhaL = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
@@ -91,19 +92,23 @@ public class LoginView extends javax.swing.JFrame {
         jLabelLogo1.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo1.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
         jLabelLogo1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogo1.setText("DC");
 
         jLabelLogo2.setBackground(new java.awt.Color(255, 255, 255));
         jLabelLogo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabelLogo2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelLogo2.setText("D E N I S E   C A B E L E I R E I R A");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("________________________________________");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("________________________________________");
 
         javax.swing.GroupLayout telainicioLayout = new javax.swing.GroupLayout(telainicio);
@@ -111,7 +116,7 @@ public class LoginView extends javax.swing.JFrame {
         telainicioLayout.setHorizontalGroup(
             telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, telainicioLayout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addGroup(telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabelLogo2)
@@ -120,7 +125,7 @@ public class LoginView extends javax.swing.JFrame {
                     .addGroup(telainicioLayout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(jLabelLogo1)))
-                .addGap(97, 97, 97))
+                .addGap(98, 98, 98))
         );
         telainicioLayout.setVerticalGroup(
             telainicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,17 +174,41 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        jFormattedTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldNomeKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldNome.setDocument(new Validador(30));
+
+        try {
+            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jFormattedTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldTelefoneActionPerformed(evt);
             }
         });
+        jFormattedTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldTelefoneKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldTelefone.setDocument(new Validador(15));
 
         jFormattedTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextFieldEmailActionPerformed(evt);
             }
         });
+        jFormattedTextFieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldEmailKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldEmail.setDocument(new Validador(35));
 
         jPanel1.setBackground(new java.awt.Color(153, 102, 255));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,6 +228,18 @@ public class LoginView extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jFormattedTextFieldSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldSenhaActionPerformed(evt);
+            }
+        });
+        jFormattedTextFieldSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldSenhaKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldSenha.setDocument(new Validador(10));
+
         telacadastro.setLayer(CadastroTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabelNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jLabelTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -212,8 +253,8 @@ public class LoginView extends javax.swing.JFrame {
         telacadastro.setLayer(jFormattedTextFieldNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jFormattedTextFieldTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jFormattedTextFieldEmail, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        telacadastro.setLayer(jFormattedTextFieldSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         telacadastro.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        telacadastro.setLayer(jFormattedTextFieldSenha, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout telacadastroLayout = new javax.swing.GroupLayout(telacadastro);
         telacadastro.setLayout(telacadastroLayout);
@@ -229,16 +270,18 @@ public class LoginView extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CadastroTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButtonCadastrar)
-                        .addComponent(jLabelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(telacadastroLayout.createSequentialGroup()
+                        .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFormattedTextFieldSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CadastroTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonCadastrar)
+                            .addComponent(jLabelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextFieldNome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTelefone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(66, 66, 66)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -268,9 +311,11 @@ public class LoginView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
-                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(telacadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(telacadastroLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jFormattedTextFieldSenha))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jButtonCadastrar)
                 .addContainerGap(108, Short.MAX_VALUE))
@@ -335,13 +380,29 @@ public class LoginView extends javax.swing.JFrame {
         });
 
         jFormattedTextFieldEmailL.setBackground(new java.awt.Color(204, 204, 204));
-
-        jFormattedTextFieldSenhaL.setBackground(new java.awt.Color(204, 204, 204));
-        jFormattedTextFieldSenhaL.setForeground(new java.awt.Color(204, 204, 204));
+        jFormattedTextFieldEmailL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldEmailLKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldEmailL.setDocument(new Validador(35));
 
         incon.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\git\\Gerenciamento-Salao-de-Beleza\\SalaoDeBeleza\\src\\main\\java\\view\\imagens\\icons\\pass.png")); // NOI18N
 
         incon1.setIcon(new javax.swing.ImageIcon("C:\\Users\\estev\\git\\Gerenciamento-Salao-de-Beleza\\SalaoDeBeleza\\src\\main\\java\\view\\imagens\\icons\\user.png")); // NOI18N
+
+        jFormattedTextFieldSenhaL.setBackground(new java.awt.Color(204, 204, 204));
+        jFormattedTextFieldSenhaL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldSenhaLActionPerformed(evt);
+            }
+        });
+        jFormattedTextFieldSenhaL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextFieldSenhaLKeyTyped(evt);
+            }
+        });
+        jFormattedTextFieldSenhaL.setDocument(new Validador(10));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -360,21 +421,20 @@ public class LoginView extends javax.swing.JFrame {
                             .addComponent(incon1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(incon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldSenhaL)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jFormattedTextFieldEmailL, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelUserEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUserSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextFieldEmailL, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jFormattedTextFieldSenhaL))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -390,12 +450,12 @@ public class LoginView extends javax.swing.JFrame {
                         .addComponent(jFormattedTextFieldEmailL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(incon1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabelUserSenha)
-                        .addGap(28, 28, 28))
-                    .addComponent(jFormattedTextFieldSenhaL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextFieldSenhaL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20)
                         .addComponent(incon, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -452,7 +512,6 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseMoved
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-//        controller.cadastrarFunc
 
             String nome = jFormattedTextFieldNome.getText();
             String telefone = jFormattedTextFieldTelefone.getText();
@@ -482,6 +541,56 @@ public class LoginView extends javax.swing.JFrame {
         telainicio.setVisible(true);
         telacadastro.setVisible(false);
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jFormattedTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldNomeKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldNomeKeyTyped
+
+    private void jFormattedTextFieldTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefoneKeyTyped
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldTelefoneKeyTyped
+
+    private void jFormattedTextFieldEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldEmailKeyTyped
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJQLMNOPQRSTUVWXY@_-.!#$%&'*+-/=?^`{|}~0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldEmailKeyTyped
+
+    private void jFormattedTextFieldEmailLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldEmailLKeyTyped
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJQLMNOPQRSTUVWXY@_-.!#$%&'*+-/=?^`{|}~0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldEmailLKeyTyped
+
+    private void jFormattedTextFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldSenhaActionPerformed
+
+    private void jFormattedTextFieldSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldSenhaKeyTyped
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJQLMNOPQRSTUVWXY@_-.!#$%&'*+-/=?^`{|}~0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldSenhaKeyTyped
+
+    private void jFormattedTextFieldSenhaLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldSenhaLActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldSenhaLActionPerformed
+
+    private void jFormattedTextFieldSenhaLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextFieldSenhaLKeyTyped
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJQLMNOPQRSTUVWXY@_-.!#$%&'*+-/=?^`{|}~0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jFormattedTextFieldSenhaLKeyTyped
 
     
     
@@ -547,8 +656,8 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextFieldEmail;
     private javax.swing.JFormattedTextField jFormattedTextFieldEmailL;
     private javax.swing.JFormattedTextField jFormattedTextFieldNome;
-    private javax.swing.JFormattedTextField jFormattedTextFieldSenha;
-    private javax.swing.JFormattedTextField jFormattedTextFieldSenhaL;
+    private javax.swing.JPasswordField jFormattedTextFieldSenha;
+    private javax.swing.JPasswordField jFormattedTextFieldSenhaL;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
