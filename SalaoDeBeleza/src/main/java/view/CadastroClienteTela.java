@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
+import util.Validador;
 
 
 
@@ -192,12 +193,45 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
 
         CampoNomeC.setBackground(new java.awt.Color(204, 204, 204));
         CampoNomeC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoNomeC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoNomeCKeyTyped(evt);
+            }
+        });
+        CampoNomeC.setDocument(new Validador(30));
 
         CampoTelefoneC.setBackground(new java.awt.Color(204, 204, 204));
         CampoTelefoneC.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            CampoTelefoneC.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        CampoTelefoneC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CampoTelefoneCActionPerformed(evt);
+            }
+        });
+        CampoTelefoneC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoTelefoneCKeyTyped(evt);
+            }
+        });
+        CampoTelefoneC.setDocument(new Validador(15));
 
         CampoWhatsappC.setBackground(new java.awt.Color(204, 204, 204));
         CampoWhatsappC.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            CampoWhatsappC.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        CampoWhatsappC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoWhatsappCKeyTyped(evt);
+            }
+        });
+        CampoWhatsappC.setDocument(new Validador(15));
 
         CampoEmailC.setBackground(new java.awt.Color(204, 204, 204));
         CampoEmailC.setForeground(new java.awt.Color(0, 0, 0));
@@ -206,12 +240,29 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
                 CampoEmailCActionPerformed(evt);
             }
         });
+        CampoEmailC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoEmailCKeyTyped(evt);
+            }
+        });
+        CampoEmailC.setDocument(new Validador(35));
 
         CampoEnderecoC.setBackground(new java.awt.Color(204, 204, 204));
         CampoEnderecoC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoEnderecoC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoEnderecoCKeyTyped(evt);
+            }
+        });
+        CampoEmailC.setDocument(new Validador(35));
 
         CampoAlergiaC.setBackground(new java.awt.Color(204, 204, 204));
         CampoAlergiaC.setForeground(new java.awt.Color(0, 0, 0));
+        CampoAlergiaC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoAlergiaCKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -347,32 +398,41 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BotaoAlterarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        controller.cadastrarCliente();
-//        controller.resetarCliente();
-//        
 
-        String nome = CampoNomeC.getText();
+        if (CampoNomeC.getText().isEmpty() && CampoTelefoneC.getText().isEmpty() && CampoEmailC.getText().isEmpty() && CampoEnderecoC.getText().isEmpty()
+                && CampoWhatsappC.getText().isEmpty() && CampoAlergiaC.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha os todos campos");
+            CampoNomeC.requestFocus();
+            CampoTelefoneC.requestFocus();
+            CampoEmailC.requestFocus();
+            CampoEnderecoC.requestFocus();
+            CampoWhatsappC.requestFocus();
+            CampoAlergiaC.requestFocus();
 
-        String telefone = CampoTelefoneC.getText();
+        } else {
+            
+            String nome = CampoNomeC.getText();
 
-        String email = CampoEmailC.getText();
+            String telefone = CampoTelefoneC.getText();
 
-        String endereco = CampoEnderecoC.getText();
+            String email = CampoEmailC.getText();
 
-        String whatsapp = CampoWhatsappC.getText();
+            String endereco = CampoEnderecoC.getText();
 
-        String alergia = CampoAlergiaC.getText();
+            String whatsapp = CampoWhatsappC.getText();
 
-        try {
-            controller.cadastrarCliente(nome, email, telefone, endereco, whatsapp, alergia);
-            LimparCampos();
-            carregarTabela();
+            String alergia = CampoAlergiaC.getText();
 
-        } catch (Exception ex) {
-            Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                controller.cadastrarCliente(nome, email, telefone, endereco, whatsapp, alergia);
+                LimparCampos();
+                carregarTabela();
+
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroClienteTela.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BotaoApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoApagarActionPerformed
@@ -402,6 +462,52 @@ public class CadastroClienteTela extends javax.swing.JInternalFrame {
     private void CampoEmailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoEmailCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoEmailCActionPerformed
+
+    private void CampoNomeCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoNomeCKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoNomeCKeyTyped
+
+    private void CampoEmailCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoEmailCKeyTyped
+        String caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJQLMNOPQRSTUVWXY@_-.!#$%&'*+-/=?^`{|}~0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoEmailCKeyTyped
+
+    private void CampoTelefoneCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoTelefoneCKeyTyped
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoTelefoneCKeyTyped
+
+    private void CampoWhatsappCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoWhatsappCKeyTyped
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoWhatsappCKeyTyped
+
+    private void CampoEnderecoCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoEnderecoCKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ0123456789,- ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoEnderecoCKeyTyped
+
+    private void CampoAlergiaCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoAlergiaCKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoAlergiaCKeyTyped
+
+    private void CampoTelefoneCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoTelefoneCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CampoTelefoneCActionPerformed
 
     public void LimparCampos() {
 
