@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import model.Agendamento;
+import util.Validador;
 
 public class AgendamentoTela extends javax.swing.JInternalFrame {
 
@@ -182,10 +183,28 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
         });
 
         CampoClienteA.setBackground(new java.awt.Color(204, 204, 204));
+        CampoClienteA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoClienteAKeyTyped(evt);
+            }
+        });
+        CampoClienteA.setDocument(new Validador(30));
 
         CampoServicoA.setBackground(new java.awt.Color(204, 204, 204));
+        CampoServicoA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoServicoAKeyTyped(evt);
+            }
+        });
+        CampoServicoA.setDocument(new Validador(30));
 
         CampoPrecoA.setBackground(new java.awt.Color(204, 204, 204));
+        CampoPrecoA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoPrecoAKeyTyped(evt);
+            }
+        });
+        CampoPrecoA.setDocument(new Validador(8));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 102, 255));
@@ -197,6 +216,12 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        CampoDataA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoDataAKeyTyped(evt);
+            }
+        });
+        CampoDataA.setDocument(new Validador(10));
 
         CampoHorarioA.setBackground(new java.awt.Color(204, 204, 204));
         try {
@@ -204,6 +229,12 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        CampoHorarioA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                CampoHorarioAKeyTyped(evt);
+            }
+        });
+        CampoHorarioA.setDocument(new Validador(5));
 
         Feito.setBackground(new java.awt.Color(0, 102, 102));
         Feito.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,9 +372,10 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BotaoApagarActionPerformed
 
     private void BotaoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAgendarActionPerformed
-
+        
+        
         String cliente = CampoClienteA.getText();
-
+        
         String servico = CampoServicoA.getText();
         Double preco = Double.parseDouble(CampoPrecoA.getText());
         String data = CampoDataA.getText();
@@ -410,6 +442,41 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
 
         carregarTabelaA();
     }//GEN-LAST:event_FeitoActionPerformed
+
+    private void CampoPrecoAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoPrecoAKeyTyped
+        String caracteres = "0123456789.";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoPrecoAKeyTyped
+
+    private void CampoDataAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoDataAKeyTyped
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoDataAKeyTyped
+
+    private void CampoHorarioAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoHorarioAKeyTyped
+        String caracteres = "0123456789";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoHorarioAKeyTyped
+
+    private void CampoClienteAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoClienteAKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoClienteAKeyTyped
+
+    private void CampoServicoAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CampoServicoAKeyTyped
+        String caracteres = "abcçdefghijklmnopqrstuvwxyzABCÇDEFGHIJQLMNOPQRSTUVWXYáéíóúâêîôûãõÁÉÍÓÚÂÊÎÔÛÃÕ ";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_CampoServicoAKeyTyped
 
     public void CarregarCampos() {
 
