@@ -11,6 +11,8 @@ import view.LoginView;
 
 public class LoginCadastroFunController {
 
+ 
+
     public void cadastrarFunc(String nome, String telefone, String email, String senha) throws Exception {
 
         Funcionario obj = new Funcionario();
