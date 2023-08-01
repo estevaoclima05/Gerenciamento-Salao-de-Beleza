@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -554,12 +555,8 @@ public class MenuView extends javax.swing.JFrame {
         private void obterQntAVariavelBD() throws SQLException {
         int soma = 0;
 
-        // Conexão com o banco de dados (substitua os valores conforme seu banco)
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String usuario = "postgres";
-        String senha = "lima12345";
-        Connection conn = DriverManager.getConnection(url, usuario, senha);
-        Statement stmt = conn.createStatement();
+        Connection conexao = Conexao.getConnection();
+        Statement stmt = conexao.createStatement();
         String again = "select * from agendamento";
         // Consulta para obter a soma da variável do banco de dados (substitua o nome da tabela e da coluna conforme sua estrutura)
         String query = "SELECT count(idagendamento) AS soma FROM agendamento";
@@ -573,7 +570,7 @@ public class MenuView extends javax.swing.JFrame {
         // Fecha os recursos
         rs.close();
         stmt.close();
-        conn.close();
+        conexao.close();
         
         
     }
@@ -581,12 +578,10 @@ public class MenuView extends javax.swing.JFrame {
     private void obterQntCVariavelBD() throws SQLException {
         int quantidade = 0;
 
-        // Conexão com o banco de dados (substitua os valores conforme seu banco)
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String usuario = "postgres";
-        String senha = "lima12345";
-        Connection conn = DriverManager.getConnection(url, usuario, senha);
-        Statement stmt = conn.createStatement();
+        
+      
+        Connection conexao = Conexao.getConnection();
+        Statement stmt = conexao.createStatement();
         
         // Consulta para obter a soma da variável do banco de dados (substitua o nome da tabela e da coluna conforme sua estrutura)
         String query = "SELECT count(idcliente) AS quantidade FROM cliente";
@@ -599,7 +594,7 @@ public class MenuView extends javax.swing.JFrame {
         // Fecha os recursos
         rs.close();
         stmt.close();
-        conn.close();
+        conexao.close();
 
     }
    
