@@ -421,7 +421,7 @@ public class AgendamentoTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableAgendamentoMouseClicked
 
     private void BotaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoLimparActionPerformed
-
+        LimparCampos();
 
     }//GEN-LAST:event_BotaoLimparActionPerformed
 
