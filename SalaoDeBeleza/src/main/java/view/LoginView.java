@@ -3,28 +3,15 @@
 package view;
 
 import controller.LoginCadastroFunController;
-import static java.lang.reflect.Array.get;
-import java.net.URL;
-import static java.nio.file.Paths.get;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import javax.swing.JOptionPane;
-
-import static javax.swing.UIManager.get;
-import javax.swing.text.PasswordView;
 import util.Validador;
 
 
 
-
 public class LoginView extends javax.swing.JFrame {
-
-    private ImageIcon image1;
+  
     private final LoginCadastroFunController controller;
     
     public LoginView() {
