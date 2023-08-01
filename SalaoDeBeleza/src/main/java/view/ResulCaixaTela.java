@@ -4,6 +4,7 @@
  */
 package view;
 
+import dao.Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,12 +38,9 @@ public class ResulCaixaTela extends javax.swing.JDialog {
         double soma = 0;
         int contador = 0;
 
-        // Conexão com o banco de dados (substitua os valores conforme seu banco)
-        String url = "jdbc:postgresql://localhost:5432/postgres";
-        String usuario = "postgres";
-        String senha = "lima12345";
-        Connection conn = DriverManager.getConnection(url, usuario, senha);
-        Statement stmt = conn.createStatement();
+        
+        Connection conexao = Conexao.getConnection();
+        Statement stmt = conexao.createStatement();
         // Consulta para obter a soma da variável do banco de dados (substitua o nome da tabela e da coluna conforme sua estrutura)
         
         String query = "SELECT count(idcaixa) as contador, sum(preço) as soma FROM caixa";
@@ -59,7 +57,7 @@ public class ResulCaixaTela extends javax.swing.JDialog {
         // Fecha os recursos
         rs.close();
         stmt.close();
-        conn.close();
+        conexao.close();
         
         
     }
