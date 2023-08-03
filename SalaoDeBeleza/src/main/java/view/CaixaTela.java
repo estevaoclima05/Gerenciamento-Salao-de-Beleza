@@ -279,8 +279,8 @@ public class CaixaTela extends javax.swing.JInternalFrame {
             contador = rs2.getInt("contador");
             soma = rs2.getDouble("soma");
 
-            String meuEmail = "estevaolimao05@gmail.com";
-            String minhaSenha = "gsmkxtgfqrgblavg";
+            String meuEmail = "denisecabeleireirajanga@gmail.com";
+            String minhaSenha = "erjecmpvgkwdeybw";
 
             SimpleEmail email = new SimpleEmail();
 
@@ -295,7 +295,7 @@ public class CaixaTela extends javax.swing.JInternalFrame {
                 email.setMsg("O valor total arrecadado de todos os agendamentos concluidos é: R$" + soma
                         + ". Tendo assim, " + contador + " agendamentos no total contabilizados com sucesso!");
 
-                email.addTo("estevaolimao05@gmail.com");
+                email.addTo("denisecabeleireirajanga@gmail.com");
                 email.send();
                 rs2.close();
                 stmt.close();
