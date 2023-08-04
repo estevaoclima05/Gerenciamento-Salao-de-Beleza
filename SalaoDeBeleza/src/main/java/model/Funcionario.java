@@ -10,25 +10,6 @@ public class Funcionario {
     private String email;
     private String telefone;
 
-    public Funcionario() {
-    }
-
-    
-
-    
-    
-    public Funcionario(String nome, String telefone, String email, String senha) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
-    }
-
-  
-    public Funcionario(String email, String senha) {
-        this.email = email;
-        this.senha = senha;
-    }
     
     public String getSenha() {
         return senha;

@@ -10,15 +10,7 @@ public class Caixa {
     private String datapc;
     private double resultado;
 
-    public Caixa(int idpc, String clientepc, double precopc, String horariopc) {
-        this.idpc = idpc;
-        this.clientepc = clientepc;
-        this.precopc = precopc;
-        this.horariopc = horariopc;
-    }
 
-    public Caixa() {
-    }
 
     public double getResultado() {
         return resultado;

@@ -7,11 +7,7 @@ import java.util.logging.Logger;
 import model.Funcionario;
 import view.LoginView;
 
-
-
 public class LoginCadastroFunController {
-
- 
 
     public void cadastrarFunc(String nome, String telefone, String email, String senha) throws Exception {
 

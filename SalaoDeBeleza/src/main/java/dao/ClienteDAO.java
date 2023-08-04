@@ -98,7 +98,7 @@ public class ClienteDAO {
 
             while (rs.next()) {
 
-                Cliente cliente = new Cliente(null, null, null, null, null, null);
+                Cliente cliente = new Cliente();
 
                 cliente.setIdC(rs.getShort("idcliente"));
                 cliente.setNomeC(rs.getString("nome"));

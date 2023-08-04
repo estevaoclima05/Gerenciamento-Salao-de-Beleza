@@ -13,30 +13,7 @@ public class Cliente {
     private String whatsapp;
     private String alergia;
 
-    public Cliente(int id ,String nome, String email, String telefone, String endereco, String whatsapp, String alergia) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.whatsapp = whatsapp;
-        this.alergia = alergia;
-    }
-    
-    public Cliente(String nome, String email, String telefone, String endereco, String whatsapp, String alergia) {
-        
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.whatsapp = whatsapp;
-        this.alergia = alergia;
-    }
-
-    public Cliente() {
-       
-    }
-
+   
     public int getIdC() {
         return id;
     }

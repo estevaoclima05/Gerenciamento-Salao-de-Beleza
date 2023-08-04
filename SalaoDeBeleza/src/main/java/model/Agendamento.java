@@ -11,32 +11,7 @@ public class Agendamento {
     private String horario;
     private String data;
 
-    public Agendamento() {
-    }
-
-    public Agendamento(int id, String cliente, String servico, Double preco, String horario) {
-        this.id = id;
-        this.cliente = cliente;
-        this.servico = servico;
-        this.preco = preco;
-        this.horario = horario;
-    }
-
-    public Agendamento(String cliente, String servico, Double preco, String horario) {
-
-        this.cliente = cliente;
-        this.servico = servico;
-        this.preco = preco;
-        this.horario = horario;
-    }
-
-    public Agendamento(int id, String servico, Double preco, String horario) {
-        this.id = id;
-        this.servico = servico;
-        this.preco = preco;
-        this.horario = horario;
-    }
-
+   
     public String getData() {
         return data;
     }

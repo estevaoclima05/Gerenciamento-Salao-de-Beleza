@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 import model.Cliente;
 import view.LoginView;
 
-
-
 public class ClienteController {
 
     public void cadastrarCliente(String nome, String email, String telefone, String endereco, String whatsapp, String alergia) {

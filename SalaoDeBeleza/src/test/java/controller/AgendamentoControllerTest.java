@@ -1,65 +1,71 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
+
 package controller;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
-/**
- *
- * @author estev
- */
-public class AgendamentoControllerTest {
-    
-    public AgendamentoControllerTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
 
-    /**
-     * Test of agendar method, of class AgendamentoController.
-     */
+
+public class AgendamentoControllerTest {
+
     @Test
     public void testAgendar() throws Exception {
-        System.out.println("agendar");
-      
+
+        String cliente = "Gabriel";
+        String servico = "Corte";
+        Double preco = 30.0;
+        String data = "03/08/2023";
+        String horario = "15:00";
+
+        AgendamentoController agendamentoService = new AgendamentoController();
+
+        try {
+
+            agendamentoService.agendar(cliente, servico, preco, data, horario);
+
+        } catch (Exception e) {
+
+            fail("O método agendar lançou uma exceção: " + e.getMessage());
+        }
     }
 
-    /**
-     * Test of alterar method, of class AgendamentoController.
-     */
     @Test
     public void testAlterar() throws Exception {
-        System.out.println("alterar");
-        
+        int id = 2;
+        String cliente = "Gabriel";
+        String servico = "Corte e Barba";
+        Double preco = 50.0;
+        String data = "03/08/2023";
+        String horario = "15:00";
+
+        AgendamentoController agendamentoService = new AgendamentoController();
+
+        try {
+
+            agendamentoService.alterar(id, cliente, servico, preco, data, horario);
+
+        } catch (Exception e) {
+
+            fail("O método alterar lançou uma exceção: " + e.getMessage());
+        }
+
     }
 
-    /**
-     * Test of apagar method, of class AgendamentoController.
-     */
     @Test
     public void testApagar() throws Exception {
-        System.out.println("apagar");
-        
+        int id = 2;
+
+        AgendamentoController agendamentoService = new AgendamentoController();
+
+        try {
+
+            agendamentoService.apagar(id);
+
+        } catch (Exception e) {
+
+            fail("O método apagar lançou uma exceção: " + e.getMessage());
+        }
+
     }
-    
+
 }
