@@ -59,7 +59,7 @@ public class AgendamentoControllerTest {
 
         try {
 
-            agendamentoService.apagar(id);
+        agendamentoService.apagar(id);
 
         } catch (Exception e) {
 
