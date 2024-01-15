@@ -3,10 +3,12 @@
 package view;
 
 import controller.LoginCadastroFunController;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import util.Validador;
+
 
 
 
@@ -467,7 +469,7 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+/*       
         if (jFormattedTextFieldEmailL.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha seu e-mail");
             jFormattedTextFieldEmailL.requestFocus();
@@ -493,7 +495,20 @@ public class LoginView extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }*/
+
+
+        //Cdigo comentado só para poder ter acesso ao MenuView sem a autenticação com BD
+        
+        MenuView telamenu;
+        try {
+            telamenu = new MenuView();
+            this.dispose();
+            telamenu.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
