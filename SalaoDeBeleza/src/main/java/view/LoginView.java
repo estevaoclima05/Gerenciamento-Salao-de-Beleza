@@ -500,14 +500,18 @@ public class LoginView extends javax.swing.JFrame {
 
         //Cdigo comentado só para poder ter acesso ao MenuView sem a autenticação com BD
         
-        MenuView telamenu;
-        try {
-            telamenu = new MenuView();
-            this.dispose();
-            telamenu.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
+        
+        	;
+			try {
+				MenuView telamenu = new MenuView();
+				this.dispose();
+	            telamenu.setVisible(true);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
